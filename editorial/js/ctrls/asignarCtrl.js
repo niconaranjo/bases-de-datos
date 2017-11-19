@@ -17,8 +17,12 @@ app.controller('asignarCtrl', ['$scope','$http', function($scope,$http){
 				}
 			  console.log(data.data);
             })
-            
-            
+
+            $http.post('../peticiones/usuarios/getaeditores.php')
+			.then(function(data){
+				
+            })
+
 		}else{
 			window.location = "index.html";
 		}

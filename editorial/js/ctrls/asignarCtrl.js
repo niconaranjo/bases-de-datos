@@ -4,6 +4,7 @@ app.controller('asignarCtrl', ['$scope','$http', function($scope,$http){
     $scope.showModal2 = false;
     $scope.masinforma = {};
     $scope.infoArt = {};
+    $scope.editores = {};
     $scope.starter = function(){
         if($scope.IsEditor){
 
@@ -17,12 +18,12 @@ app.controller('asignarCtrl', ['$scope','$http', function($scope,$http){
 				}
 			  console.log(data.data);
             })
-
+            /*
             $http.post('../peticiones/usuarios/getaeditores.php')
 			.then(function(data){
-				
+				$scope.editores = data.data;
             })
-
+            */
 		}else{
 			window.location = "index.html";
 		}

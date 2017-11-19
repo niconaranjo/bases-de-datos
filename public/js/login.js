@@ -61,6 +61,7 @@ app.controller('loginCtrl', ['$scope', '$http', function($scope, $http){
                 $http.post('peticiones/login/login.php', $scope.aux)
                 .then(function(data){
                     if(data.data.valor === '0' ){
+
                     }else{
                         
                         $scope.infouser =  data.data;
@@ -91,9 +92,9 @@ app.controller('loginCtrl', ['$scope', '$http', function($scope, $http){
         $scope.enviado = true;
         $http.post('peticiones/login/login.php', $scope.userVal)
                 .then(function(data){
+                    console.log(data.data.valor);
                     
                     if(data.data.valor === '0' ){
-                        
                         setTimeout(function(){
                             $scope.enviado = false;
                             $scope.validar = true;
@@ -103,7 +104,7 @@ app.controller('loginCtrl', ['$scope', '$http', function($scope, $http){
                        
                         $scope.infouser =  data.data;
                         setTimeout(function(){
-                            window.location = "editorial/index.html";
+                            //window.location = "editorial/index.html";
                         }, 2500);
                     }
                 })

@@ -5,6 +5,38 @@ app.controller('asignarCtrl', ['$scope','$http', function($scope,$http){
     $scope.masinforma = {};
     $scope.infoArt = {};
     $scope.editores = {};
+    //Borrar Despues
+    $scope.editores = [
+
+        {
+            nombre:'NICOLAS',
+            apellido:'NARANJO MEJIA',
+            correo:'niconaranjo95@gmail.com',
+            idioma:'0,1',
+            int_revisor:'Diseño, UX',
+            biografia: 'Hola esta es la bio',
+            institucion:'UMNG'
+        },
+        {
+            nombre:'NICOLAS',
+            apellido:'NARANJO MEJIA',
+            correo:'niconaranjo95@gmail.com',
+            idioma:'0,1',
+            int_revisor:'Diseño, UX',
+            biografia: 'Hola esta es la bio',
+            institucion:'UMNG'
+        },
+        {
+            nombre:'NICOLAS',
+            apellido:'NARANJO MEJIA',
+            correo:'niconaranjo95@gmail.com',
+            idioma:'0,1',
+            int_revisor:'Diseño, UX',
+            biografia: 'Hola esta es la bio',
+            institucion:'UMNG'
+        }
+    ]
+
     $scope.starter = function(){
         if($scope.IsEditor){
 
@@ -19,7 +51,7 @@ app.controller('asignarCtrl', ['$scope','$http', function($scope,$http){
 			  console.log(data.data);
             })
             /*
-            $http.post('../peticiones/usuarios/getaeditores.php')
+            $http.post('../peticiones/usuarios/getarevisores.php')
 			.then(function(data){
 				$scope.editores = data.data;
             })

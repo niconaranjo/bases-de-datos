@@ -36,7 +36,7 @@
 
 
       $pasn = Database::uncrypt($pass, $row["password"]);
-      if( $pass == true ){
+      if( $pasn == true ){
         //Se inicia sesión de php para guardar variables globales
         session_start();
 

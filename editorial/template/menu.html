@@ -1,0 +1,45 @@
+
+<div class="side-navbar-wrapper">
+    <div class="sidenav-header d-flex align-items-center justify-content-center">
+        <div class="sidenav-header-inner text-center">
+            <img src="img/avatar-1.jpg" alt="person" class="img-fluid rounded-circle">
+            <h2 class="h5 ">{{ usuer.nombre | capitalize }} {{ usuer.apellido | capitalize  }}</h2>
+            <span class="text-uppercase">{{ usuer.tipo_usuario | Tuser }}</span>
+        </div>
+        <div class="sidenav-header-logo">
+            <a href="index.html" class="brand-small text-center">
+                <img src="img/avatar-1.jpg" alt="person" class="img-fluid rounded-circle">
+            </a>
+        </div>
+    </div>
+    <div class="main-menu">
+        <ul id="side-main-menu" class="side-menu list-unstyled">
+            <li ng-class="mDashboard">
+                <a href="#!/">
+                    <i class="icon-home"></i>
+                    <span>Inicio</span>
+                </a>
+            </li>
+            <li  ng-class="marticulos" ng-show="IsAutor">
+                <a href="#!/articulo">
+                    <i class="icon-form"></i>
+                    <span>Artículos</span>
+                </a>
+            </li>
+            <li ng-class="mnuevoArticulo" ng-show="IsAutor">
+                <a href="#!/nuevo-articulo">
+                    <i class="icon-form"></i>
+                    <span>Nuevo artículo</span>
+                </a>
+            </li>
+
+            <li ng-class="masignar" ng-show="IsEditor">
+                    <a href="#!/asignar-articulos">
+                        <i class="icon-form"></i>
+                        <span>Asignar Articulos</span>
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+</div>

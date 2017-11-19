@@ -1,0 +1,106 @@
+<section class="section-padding section-no-padding-bottom animated fadeIn fast" ng-controller="articulosCtrl"  ng-init="getArticulos()" >
+    <div class="container-fluid" ng-show="hayArt">
+        <h1>Tus Artículos</h1>
+        <table class="table table-responsive ">
+            <thead class="thead-dark">
+                <tr>
+                    <th style="width: 14%; min-width: 10%;">Nombre del artículo</th>
+                    <th style="width: 5%; min-width: 10%;">Estado</th>
+                    <th style="width: 40%; min-width: 10%;">Resumen del artículo</th>
+                    <th style="width: 14%; min-width: 10%;">Organizacion Colaboradores</th>
+                    <th style="width: 14%; min-width: 10%;">Autores</th>
+                    <th style="width: 22%; min-width: 10%;">Revisores</th>
+                    <th style="width: 10%; min-width: 10%;">Mas info</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="articulo in articulos">
+                    <td>{{ articulo.titulo }}</td>
+                    <td>ESTADO</td>
+                    <td>{{ articulo.resumen }}</td>
+                    <td>{{ articulo.org_colaboradores }}</td>
+                    <td>{{ articulo.autores }}</td>
+                    <td >
+                        <img class="img-revisor rounded-circle" src="img/usuario.png" alt="person" class="img-fluid rounded-circle">
+                        <img class="img-revisor rounded-circle" src="img/avatar-1.jpg" alt="person" class="img-fluid rounded-circle">
+                        <img class="img-revisor rounded-circle" src="img/avatar-1.jpg" alt="person" class="img-fluid rounded-circle">
+                        <img class="img-revisor rounded-circle" src="img/avatar-1.jpg" alt="person" class="img-fluid rounded-circle">
+                        <img class="img-revisor rounded-circle" src="img/avatar-1.jpg" alt="person" class="img-fluid rounded-circle">
+                    </td>
+                    <td class="btn btn-primary" ng-model="$index" ng-click="masinfo($index)" data-toggle="modal" data-target="#masInfo"><i class="fa fa-eye" ></i> Mas</td>
+
+                </tr>
+
+            </tbody>
+        </table>
+        <!-- Modal -->
+        <div class="modal fade" id="masInfo" tabindex="100" role="dialog" aria-labelledby="masInfo" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div id="modal-header-articulos" class="modal-header">
+                        <h5 class="modal-title" id="masInfoTitle">{{ masinforma.titulo }}</h5>
+                        <h5 class="modal-title" id="masInfoEstado">Estado</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        
+                    </div>
+                    <div class="modal-body" ng-show="modals">
+                        <table class="table table-responsive ">
+                            <tbody>
+                                <tr>
+                                    <th>Version</th>
+                                    <td>{{ masinforma.version }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Autores</th>
+                                    <td>{{ masinforma.autores }}</td>
+                                </tr>
+                                <tr>
+                                    <th>idiomas</th>
+                                    <td>{{ masinforma.idiomas | idiomas }}</td>
+                                </tr>
+                                
+                                <tr>
+                                    <th>Recursos multimedia</th>
+                                    <td>{{ masinforma.recuros_multimedia }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Referencias</th>
+                                    <td>{{ masinforma.referencias }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Agradecimiento Autores</th>
+                                    <td>{{ masinforma.version_agradecimiento_autores }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Sesion Derechos Autor</th>
+                                    <td>{{ masinforma.sesion_derechos_autor }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="container-fluid" ng-show="!hayArt">
+        <div class="jumbotron">
+            <h1 class="display-3">Aun no tienes articulos </h1>
+            <p class="lead">Aqui podras ver todos tus articulos e interactuar con su informacion</p>
+            <hr class="my-4">
+            <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+            <p class="lead">
+                <a class="btn btn-primary btn-lg" href="#!/nuevo-articulo" role="button">Empieza ya!</a>
+            </p>
+        </div>
+    </div>
+
+
+</section>

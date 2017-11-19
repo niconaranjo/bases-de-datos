@@ -1,0 +1,131 @@
+<section class="section-padding section-no-padding-bottom animated fadeIn fast" ng-controller="asignarCtrl" ng-init="starter()">
+    <div class="container-fluid">
+        <h1>Tus Artículos</h1>
+        <table class="table table-responsive ">
+            <thead class="thead-dark">
+                <tr>
+                    <th style="width: 14%; min-width: 10%;">Nombre del artículo</th>
+                    <th style="width: 5%; min-width: 10%;">Autor</th>
+                    <th style="width: 10%; min-width: 10%;">Fecha</th>
+                    <th style="width: 14%; min-width: 10%;">Mas info</th>
+                    <th style="width: 22%; min-width: 10%;">Revisores</th>
+                    <th style="width: 10%; min-width: 10%;">Asignar Revisor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="articulo in articulos">
+                    <td>{{ articulo.titulo }}</td>
+                    <td>{{ articulo.nombre | capitalize }} {{ articulo.apellido | capitalize }}</td>
+                    <td>{{ articulo.fecha_envio }}</td>
+                    <td class="btn btn-success" ng-model="$index" ng-click="masinfo($index)">
+                        <i class="fa fa-eye"></i> Mas info.</td>
+                    <td>
+                        <img class="img-revisor rounded-circle" src="img/usuario.png" alt="person" class="img-fluid rounded-circle">
+                        <img class="img-revisor rounded-circle" src="img/avatar-1.jpg" alt="person" class="img-fluid rounded-circle">
+                        <img class="img-revisor rounded-circle" src="img/avatar-1.jpg" alt="person" class="img-fluid rounded-circle">
+                        <img class="img-revisor rounded-circle" src="img/avatar-1.jpg" alt="person" class="img-fluid rounded-circle">
+                        <img class="img-revisor rounded-circle" src="img/avatar-1.jpg" alt="person" class="img-fluid rounded-circle">
+                    </td>
+                    <td class="btn btn-primary" ng-model="$index" ng-click="modalagregarRev($index)">
+                        <i class="fa fa-user"></i> Asignar</td>
+
+                </tr>
+
+            </tbody>
+        </table>
+
+
+        <modal visible="showModal" backdrop="static" tam="lg">
+            <modal-header title="{{ infoArt.titulo }}"></modal-header>
+            <modal-body>
+                <div class="col-md-12">
+
+                    <label for="buscar">Buscar por revisor o por Intereses de Revision </label>
+                    <input type="text" id="buscar" class="form-control">
+
+                </div>
+
+                <div class="row col-md-12">
+                    <div class="col-md-6">
+                        <table class="table table-responsive ">
+                            <thead class="thead-light" style="display: block;">
+                                <tr style="width: 100%; display: flex; flex-direction: row; ">
+                                    <th style="width: 50%; min-width: 10%;">Nombre Revisor</th>
+                                    <th style="width: 50%; min-width: 10%;">Intereses</th>
+
+                                </tr>
+                            </thead>
+                            <tbody class="tabla-body ">
+                                <tr ng-repeat="articulo in articulos" style="width: 100%; display: flex; flex-direction: row; ">
+                                    <td style="width: 50%;">Nombre</td>
+                                    <td style="width: 50%;">Interes</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col-md-6">
+                        <h2>INFO POR REVISOR</h2>
+                    </div>
+                </div>
+                <div class="col-md-12">
+
+                    <h1>Revisores Asignados</h1>
+
+                </div>
+
+            </modal-body>
+            <modal-footer>
+                <button type="button" class="btn btn-secondary" ng-click="hide()">Cerrar</button>
+            </modal-footer>
+        </modal>
+
+        <modal visible="showModal2" tam="md">
+            <modal-header title="{{ masinforma.titulo }} "></modal-header>
+            <modal-body>
+                <table class="table table-responsive ">
+                    <tbody>
+                        <tr>
+                            <th>Version</th>
+                            <td>{{ masinforma.version }}</td>
+                        </tr>
+                        <tr>
+                            <th>Autores</th>
+                            <td>{{ masinforma.autores }}</td>
+                        </tr>
+                        <tr>
+                            <th>idiomas</th>
+                            <td>{{ masinforma.idiomas | idiomas }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Recursos multimedia</th>
+                            <td>{{ masinforma.recuros_multimedia }}</td>
+                        </tr>
+                        <tr>
+                            <th>Referencias</th>
+                            <td>{{ masinforma.referencias }}</td>
+                        </tr>
+                        <tr>
+                            <th>Agradecimiento Autores</th>
+                            <td>{{ masinforma.version_agradecimiento_autores }}</td>
+                        </tr>
+                        <tr>
+                            <th>Sesion Derechos Autor</th>
+                            <td>{{ masinforma.sesion_derechos_autor }}</td>
+                        </tr>
+                        <tr>
+                            <th>Resumen</th>
+                            <td>{{ masinforma.resumen }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </modal-body>
+            <modal-footer>
+                <button type="button" class="btn btn-secondary" ng-click="hide()">Cerrar</button>
+            </modal-footer>
+        </modal>
+
+    </div>
+</section>

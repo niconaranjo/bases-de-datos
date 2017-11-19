@@ -1,0 +1,261 @@
+<div class="page login-page">
+    <div class="container">
+        <div class="form-outer text-center d-flex align-items-center">
+            <div class="form-inner">
+                <div class="logo text-uppercase">
+                    <span>Bases de &shy;</span>
+                    <strong class="text-primary">Datos</strong>
+                </div>
+                <p>Ingrese a la plataforma de revisión de artículos</p>
+
+                <form id="login-form" name="forma" ng-submit="validarUsuario()">
+                    <div  class="alert alert-danger" role="alert" ng-show="validar"> Los datos ingresados no son correctos por favor revise su Nickname y Contraseña </div>
+                    <div class="form-group">
+                        <label for="nickname">Nickname</label>
+                        <input type="text" class="form-control" id="nickname" name="user" ng-model="userVal.user" required="required" placeholder="Ingresar Nickname">
+                    </div>
+                    <div class="form-group">
+                        <label for="contrasena">Contraseña</label>
+                        <input type="password" class="form-control" id="contrasena" name="pass" ng-model="userVal.pass" placeholder="Password" required="required">
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="BT-ingresar" ng-disabled="forma.$invalid || enviado"> 
+                        <span ng-show="!enviado">Iniciar sesi&oacute;n</span> 
+                        <span ng-show="enviado"><i class="fa fa-spinner fa-spin "></i> Iniciando sesi&oacute;n</span>
+                    </button>
+                    <!-- This should be submit button but I replaced it with <a> for demo purposes-->
+                </form>
+
+                <a href="#" class="forgot-pass">¿Olvid&oacute; la contrase&ntilde;a?</a>
+                <small>¿No tiene una cuenta? </small>
+                <a href="#" data-toggle="modal" data-target="#exampleModal" class="signup">Registrese aquí</a>
+
+            </div>
+            <div class="copyrights text-center">
+                <p>Design by
+                    <a href="#" class="external">Natsu</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ingrese sus datos</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <form name="formulario" ng-submit="registroUsuario()">
+
+                        <div class="form-group">
+                            <div class="col-auto">
+                                <div class="input-group mb-2 mb-sm-0">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-address-card-o" aria-hidden="true"></i>
+                                    </div>
+                                    <input type="text" class="form-control" id="nombre" name="nombre" ng-model="formRegister.nombre" placeholder="Ingresar Nombre">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="col-auto">
+                                <div class="input-group mb-2 mb-sm-0">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-address-card-o" aria-hidden="true"></i>
+                                    </div>
+                                    <input type="text" class="form-control" id="apellido" ng-model="formRegister.apel" name="apellido" placeholder="Ingresar Apellido">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="col-auto">
+                                <div class="input-group mb-2 mb-sm-0">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-user" aria-hidden="true"></i>
+                                    </div>
+                                    <input type="text" class="form-control" ng-model="formRegister.nickname" id="nickname_r" name="nickname" placeholder="Ingresar Nickname">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-auto">
+                                <div class="input-group mb-2 mb-sm-0">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-key" aria-hidden="true"></i>
+                                    </div>
+                                    <input type="password" class="form-control" ng-model="formRegister.pass" id="password_r" name="password" placeholder="Ingresar Password">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-auto">
+                                <div id="genero">
+                                    <label for="genero">Seleccione su genero:</label>
+                                    <br>
+                                    <div class="contentradio">
+                                        
+                                        <div class="form-check form-check-inline contentradio-success">
+                                            <input class="form-check-input" ng-model="formRegister.genero" type="radio" name="genero" value="0" id="radio1"> 
+                                            <label class="form-check-label" for="radio1"> Hombre </label>
+                                        </div>
+                                        <div class="form-check form-check-inline contentradio-success">
+                                            <input class="form-check-input" ng-model="formRegister.genero" type="radio" name="genero" value="1" id="radio2"> 
+                                            <label class="form-check-label" for="radio2">Mujer </label>
+                                        </div>
+    
+                                        <div class="form-check form-check-inline contentradio-success">
+                                            <input class="form-check-input"  id="radio3"  ng-model="formRegister.genero" type="radio" name="genero" value="2"> 
+                                            <label class="form-check-label" for="radio3">No especifica</label>
+                                            
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-auto">
+                                <div class="input-group mb-2 mb-sm-0">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                    </div>
+                                    <input type="email" ng-model="formRegister.correo"  class="form-control" id="correo" name="correo" placeholder="Ingresar Correo">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-auto" data-ng-init="getPaises()">
+                                <div class="input-group mb-2 mb-sm-0">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-globe" aria-hidden="true"></i>
+                                    </div>
+                                    <select id="pais" ng-model="formRegister.pais" class="form-control" 
+                                    ng-options="pais.Codigo as pais.Pais for pais in paises ">
+                                        <option value="">Seleccione un pais</option>
+                                        
+                                        
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            
+                            <div class="col-auto">
+                                    Ingresar Idiomas <br><br>
+                                <div class="input-group mb-2 mb-sm-0 IdiomaLeng">
+                                        
+                                    <div class="IdiomaLeng">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-language" aria-hidden="true"></i>
+                                        </div>
+                                        
+                                        <ul class="form-control" id="idioma" 
+                                            ng-model="formRegister.idioma ">
+                                            
+                                            <li class="LengSelected animated fadeInRight" ng-repeat="idioma in idiomasselec" 
+                                            ng-click="borrarPais(idioma.idioma)"><i class="fa fa-times"></i> {{ idioma.idioma }}</li>
+                                        </ul>
+                                    </div>
+
+                                    <ul id="lenguaje">
+                                        <li class="SelectLang animated slideInLeft"  ng-repeat="idiomasec in idiomassecs" 
+                                        ng-click="agregarPais(idiomasec.idioma, idiomasec.val )"
+                                        ng-show="idiomasec.show"> 
+                                            <i class="fa fa-plus" ></i> {{ idiomasec.idioma }}
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-auto">
+                                <div class="input-group mb-2 mb-sm-0">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-university" aria-hidden="true"></i>
+                                    </div>
+                                    <input type="text" ng-model="formRegister.institucion" class="form-control" id="institucion" name="institucion" placeholder="Ingresar Institucion">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-auto">
+                                <div class="input-group mb-2 mb-sm-0">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-phone" aria-hidden="true"></i>
+                                    </div>
+                                    <input type="number" class="form-control" ng-model="formRegister.tel" id="telefono" name="telefono" placeholder="Ingresar Telefono">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-auto">
+                                <div id="t_usuario">
+                                    <label for="inlineRadio1">Seleccione su tipo de usuario:</label>
+                                    <br>
+
+                                    <div class="contentradio">
+
+                                        <div class="form-check form-check-inline contentradio-success">
+                                                <input class="form-check-input" ng-model="formRegister.tipouser" type="radio" name="t_usuario" value="0" id="autor1"> 
+                                                <label class="form-check-label" for="autor1">Autor</label>
+                                            </div>
+                                            <div class="form-check form-check-inline contentradio-success">
+                                                    <input class="form-check-input" type="radio" ng-model="formRegister.tipouser" name="t_usuario" value="1" id="autor2"> 
+                                                <label class="form-check-label" for="autor2">  Revisor </label>
+                                            </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group animated fadeIn" ng-show="formRegister.tipouser == '1' ">
+                                <div class="col-auto">
+                                    <label for="intereses">Escriba sus intereses: <i>Separarlos por "," </i></label>
+                                    <div class="input-group mb-2 mb-sm-0">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        </div>
+                                        <input type="text" ng-model="formRegister.intereses" class="form-control" id="intereses" name="intereses" placeholder="Ingresar intereses">
+                                    </div>
+                                </div>
+                            </div>
+
+                        <div class="form-group">
+                            <div class="col-auto">
+                                <div class="input-group mb-2 mb-sm-0">
+                                    <textarea class="form-control" id="biografia" ng-model="formRegister.bio" name="biografia" rows="10">Ingrese su biografia</textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" id="BT-registrar">Registrarse</button>
+                        <div ng-show="registroNeg" class="alert alert-danger" role="alert"> Los datos ingresados no son correctos por favor revise</div>
+                        <div ng-show="registroEx" class="alert alert-success" role="alert"> Su cuenta ha sido creada </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

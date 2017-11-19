@@ -1,0 +1,153 @@
+<section class="section-padding section-no-padding-bottom animated fadeIn fast" ng-controller="nuevoArticuloCtrl" ng-init="starter()">
+
+    <div class="container-fluid">
+
+        <form ng-submit="subir( formulario.$valid )" novalidate="novalidate">
+            <div class="row">
+                <div class="col-md-6">
+
+                    <div class="form-group">
+                        <label for="nombre">Titulo</label>
+                        <input type="text" id="titulo" class="form-control" name="titulo" ng-model="formData.titulo" required="required">
+                    </div>
+
+                    <div class="form-group">
+                        Ingrese resumen del articulo
+                        <div class="input-group mb-2 mb-sm-0">
+                            <textarea class="form-control" id="resumen" ng-model="formData.resumen" name="resumen" rows="10" required="required"> </textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="clave">Palabras Clave</label>
+                        <input type="text" id="clave" class="form-control" name="clave" ng-model="formData.clave" required="required">
+                    </div>
+                    <div class="form-group">
+                        <label for="nombre">Autores</label>
+                        <input type="text" id="autores" class="form-control" name="autores" ng-model="formData.autores" required="required">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nombre">Subir Articulo en formatos PDF o Word</label>
+                        <input id="file_a" name="articulo" type="file" file-input="file_a" ng-model="files_a" accept=".pdf, .docx, .doc" valid-file
+                            required="required">
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+
+                    Ingresar Idiomas
+                    <div class="form-group">
+
+                        <div class="input-group mb-2 mb-sm-0 IdiomaLeng">
+
+                            <div class="IdiomaLeng">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-language" aria-hidden="true"></i>
+                                </div>
+
+                                <ul class="form-control " id="idioma" ng-model="formRegister.idioma ">
+
+                                    <li class="LengSelected animated fadeInRight" ng-repeat="idioma in idiomasselec" ng-click="borrarPais(idioma.idioma)">
+                                        <i class="fa fa-times"></i> {{ idioma.idioma }}</li>
+                                </ul>
+                            </div>
+
+                            <ul id="lenguaje">
+                                <li class="SelectLang animated slideInLeft" ng-repeat="idiomasec in idiomassecs" ng-click="agregarPais(idiomasec.idioma, idiomasec.val)"
+                                    ng-show="idiomasec.show">
+                                    <i class="fa fa-plus"></i> {{ idiomasec.idioma }}
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="nombre">Referencias</label>
+                        <input type="text" id="referencias" class="form-control" name="referencias" ng-model="formData.referencias" required="required">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nombre">Suba sus imagenes</label>
+                        <input id="recursos" name="recursos" type="file" file-input-image="recursos" ng-model="recursos" accept="image/*, video/*"
+                            multiple>
+                    </div>
+                    <div class="form-group">
+                        <label for="organc">Organismos Colaboradores</label>
+
+                        <input type="text" id="organc" class="form-control" name="organc" ng-model="formData.organc" required="required">
+                    </div>
+                    <div class="form-group">
+                        <label for="nombre">Subir
+                            <i> Sesion de derechos de autor </i> en formatos PDF o Word</label>
+                        <input id="file_b" name="articulo1" type="file" file-input="file_b" ng-model="files_b" accept=".pdf, .docx, .doc" valid-file
+                            required="required">
+                    </div>
+                    <div class="form-group">
+                        <label for="nombre">Subir
+                            <i> version agradecimiento autores </i> en formatos PDF o Word</label>
+                        <input id="file_c" name="articulo2" type="file" file-input="file_c" ng-model="files_c" accept=".pdf, .docx, .doc" valid-file
+                            required="required">
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <button type="submit" class="btn btn-primary"> Guardar</button>
+        </form>
+
+        <modal visible="showModal" backdrop="static" tam ="md">
+            <modal-header title="Subiendo sus archivos"></modal-header>
+            <modal-body>
+                <div ng-show="!nocarga">
+                    <div class="carga" ng-show="carga">
+                        <div class="wrapper">
+                            <progress-arc size="100" stroke="{{ stroke }}" stroke-width="9" complete="Psubida">
+                            </progress-arc>
+                        </div>
+                        <div class="col-12 info justify-content-center">
+                            <h3 class="text-center">Sus archivos se están Cargando</h3>
+                        </div>
+                    </div>
+                    <div class="carga " ng-show="!carga">
+                        <div class="swal2-icon swal2-success swal2-animate-success-icon" style="display: block;">
+                            <div class="swal2-success-circular-line-left" style="background: rgb(255, 255, 255);"></div>
+                            <span class="swal2-success-line-tip swal2-animate-success-line-tip"></span>
+                            <span class="swal2-success-line-long swal2-animate-success-line-long"></span>
+                            <div class="swal2-success-ring"></div>
+                            <div class="swal2-success-fix" style="background: rgb(255, 255, 255);"></div>
+                            <div class="swal2-success-circular-line-right" style="background: rgb(255, 255, 255);"></div>
+                        </div>
+                        <div class="col-12 info justify-content-center">
+                            <h3 class="text-center">Sus archivos han cargado adecuadamente</h3>
+                        </div>
+                    </div>
+                </div>
+                <div ng-show="nocarga">
+                    <div class="carga ">
+                        <div class="swal2-icon swal2-error swal2-animate-error-icon" style="display: block;">
+                            <span class="swal2-x-mark swal2-animate-x-mark">
+                                <span class="swal2-x-mark-line-left"></span>
+                                <span class="swal2-x-mark-line-right"></span>
+                            </span>
+                        </div>
+                        <div class="col-12 info justify-content-center">
+                            <h3 class="text-center">Sus archivos no se han cargado adecuadamente, por favor revise</h3>
+                        </div>
+                    </div>
+                </div>
+
+
+            </modal-body>
+            <modal-footer>
+
+                <button type="button" class="btn btn-secondary" ng-click="hide()">Cerrar</button>
+
+
+            </modal-footer>
+        </modal>
+
+    </div>
+</section>

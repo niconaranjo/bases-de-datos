@@ -1,0 +1,198 @@
+@charset "UTF-8";
+/*Estilo para funcionalidades de botones modals y mas, esto mientras se implementa el diseno */
+.container-f {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto; }
+
+ul, li {
+  text-decoration: none;
+  list-style: none; }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none; }
+
+#ing-corre {
+  display: none;
+  margin: 10px 0px;
+  text-align: center; }
+
+#reg-pos, #reg-neg {
+  display: none; }
+
+.IdiomaLeng {
+  display: flex; }
+  .IdiomaLeng #idioma {
+    padding: 0px 10px;
+    height: 100%;
+    width: 250px;
+    display: flex;
+    flex-direction: column; }
+    .IdiomaLeng #idioma .LengSelected {
+      cursor: pointer;
+      width: 130px;
+      margin: 1.5px;
+      padding: 2.5px 10px;
+      background-color: #2b90d9;
+      border-radius: 5px;
+      color: #ffffff; }
+      .IdiomaLeng #idioma .LengSelected i {
+        padding: 0px 5px; }
+
+#lenguaje {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 10px;
+  height: 117px; }
+
+.SelectLang {
+  cursor: pointer;
+  margin: 5px;
+  padding: 2.5px 10px;
+  width: 130px;
+  background-color: #2b90d9;
+  border-radius: 5px;
+  color: #ffffff; }
+  .SelectLang i {
+    padding: 0px 5px; }
+
+.contentradio div {
+  clear: both;
+  overflow: hidden; }
+.contentradio label {
+  width: 100%;
+  border-radius: 3px;
+  border: 1px solid #D1D3D4;
+  font-weight: normal; }
+.contentradio input[type="radio"]:empty {
+  display: none; }
+  .contentradio input[type="radio"]:empty ~ label {
+    position: relative;
+    line-height: 2.5em;
+    text-indent: 3.25em;
+    cursor: pointer;
+    user-select: none; }
+    .contentradio input[type="radio"]:empty ~ label:before {
+      position: absolute;
+      display: block;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      content: "";
+      width: 2.5em;
+      background: #D1D3D4;
+      border-radius: 3px 0 0 3px; }
+.contentradio input[type="radio"]:hover:not(:checked) ~ label {
+  color: #888; }
+  .contentradio input[type="radio"]:hover:not(:checked) ~ label:before {
+    content: "✔";
+    text-indent: 0.9em;
+    color: #C2C2C2; }
+.contentradio input[type="radio"]:checked ~ label {
+  color: #777; }
+  .contentradio input[type="radio"]:checked ~ label:before {
+    content: "✔";
+    text-indent: 0.9em;
+    color: #333;
+    background-color: #ccc; }
+.contentradio input[type="radio"]:focus ~ label:before {
+  box-shadow: 0 0 0 3px #999; }
+.contentradio-success input[type="radio"]:checked ~ label:before,
+.contentradio-success input[type="checkbox"]:checked ~ label:before {
+  color: #fff;
+  background-color: #337ab7; }
+
+.form-check-label {
+  padding-left: 0 !important;
+  padding-right: 1.25rem !important; }
+
+@media (max-width: 600px) {
+  .IdiomaLeng #idioma {
+    padding: 0px 10px;
+    height: 100px;
+    width: 150px; } }
+.modal-backdrop {
+  display: none; }
+
+#modal-header-articulos {
+  display: flex;
+  flex-direction: row; }
+  #modal-header-articulos #masInfoTitle {
+    max-width: 200px; }
+  #modal-header-articulos #masInfoEstado {
+    padding-left: 50px; }
+
+.img-revisor {
+  max-width: 30px; }
+
+.has-error {
+  border-color: #dc3545;
+  color: #dc3545; }
+  .has-error input {
+    border-color: #dc3545; }
+    .has-error input:focus {
+      border-color: #dc3545 !important;
+      box-shadow: 0 0 0 0.2rem rgba(255, 156, 168, 0.84) !important; }
+
+.has-success {
+  border-color: #5cb85c;
+  color: #5cb85c; }
+  .has-success input {
+    border-color: #5cb85c; }
+    .has-success input:focus {
+      border-color: #5cb85c !important;
+      box-shadow: 0 0 0 0.2rem rgba(99, 187, 99, 0.48) !important; }
+
+.has-warning {
+  border-color: #f0ad4e;
+  color: #f0ad4e; }
+  .has-warning input {
+    border-color: #f0ad4e; }
+    .has-warning input:focus {
+      border-color: #f0ad4e !important;
+      box-shadow: 0 0 0 0.2rem rgba(241, 194, 126, 0.65) !important; }
+
+.image-preview-input {
+  position: relative;
+  overflow: hidden;
+  margin: 0px;
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc; }
+
+.image-preview-input input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0); }
+
+.image-preview-input-title {
+  margin-left: 2px; }
+
+.wrapper {
+  width: 380px;
+  margin: 0 auto; }
+  .wrapper svg {
+    display: block;
+    margin: 0 auto 20px; }
+  .wrapper circle {
+    stroke-linecap: round; }
+
+.tabla-body {
+  width: 100%;
+  height: 150px;
+  min-height: 150px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: block;
+  border: 1px solid #e9ecef; }
+
+/*# sourceMappingURL=funciones.css.map */

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html ng-app="basesdedatosApp" ng-controller="appCtrl">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Bootstrap Dashboard by Bootstrapious.com</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    
+    <!-- Google fonts - Roboto -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="../public/css/tema/style.blue.css" id="theme-stylesheet">
+    <!-- jQuery Circle-->
+    <link rel="stylesheet" href="../public/css/tema/grasp_mobile_progress_circle-1.0.0.min.css">
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="../public/css/tema/custom.css">
+    <!-- Favicon-->
+    
+    <!-- Font Awesome CDN-->
+    <!-- you can replace it by local Font Awesome-->
+    <script src="https://use.fontawesome.com/99347ac47f.js"></script>
+    <!-- Font Icons CSS-->
+    <link rel="stylesheet" href="https://file.myfontastic.com/da58YPMQ7U5HY8Rb6UxkNf/icons.css">
+    <link rel="stylesheet" href="../public/css/funciones.css">
+    <link rel="stylesheet" href="../public/css/animate.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.0/sweetalert2.css" >
+
+    <!-- Dependencias Angular-->
+    <script src="../public/js/lib/angular.min.js"></script>
+    <script src="../public/js/lib/angular-route.min.js"></script>
+    <script src="../public/js/lib/jcs-auto-validate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.0/sweetalert2.min.js"></script>
+    <script src="../public/js/lib/angular-progress-arc.min.js"></script>
+    
+
+    <script src="js/app.js"></script>
+    <!-- servicios -->
+
+    <!-- Controladores -->
+    <script src="js/ctrls/dashboardCtrl.js"></script>
+    <script src="js/ctrls/articulosCtrl.js"></script>
+    <script src="js/ctrls/nuevoArticuloCtrl.js"></script>
+    <script src="js/ctrls/asignarCtrl.js"></script>
+    
+</head>
+
+<body ng-init="Session()" >
+    <div ng-show="sessionIs">
+         <!-- Side Navbar -->
+    <nav class="side-navbar" ng-include="menu">
+        
+    </nav>
+    <div class="page home-page">
+
+        <!-- navbar-->
+        <header class="header" ng-include="'template/navbar.html'">
+
+        </header>
+
+        
+
+        <section class="charts" ng-view>
+            
+        </section>
+
+        <footer class="main-footer" ng-include="'template/footer.html'">
+
+        </footer>
+    </div>
+    </div>
+
+    <div ng-show="sessionNo">
+
+        <div ng-include="'template/nosession.html'"></div>
+
+    </div>
+
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    <script src="../public/js/tema/tether.min.js"></script>
+    <script src="../public/js/tema/jquery.cookie.js"> </script>
+    <script src="../public/js/tema/grasp_mobile_progress_circle-1.0.0.min.js"></script>
+    <script src="../public/js/tema/jquery.nicescroll.min.js"></script>
+    <script src="../public/js/tema/jquery.validate.min.js"></script>
+    <script src="../public/js/tema/front.js"></script>
+    <script src="../public/js/tema/input-file.js"></script>
+
+    
+</body>
+
+</html>

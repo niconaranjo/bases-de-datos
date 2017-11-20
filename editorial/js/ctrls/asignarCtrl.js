@@ -34,23 +34,25 @@ app.controller('asignarCtrl', ['$scope','$http', function($scope,$http){
 		}
     }
     $scope.agregarRevisor = function(data){
+        if(!$scope.asignados ){
+            
+            $scope.asignados = [];
+        } 
         
-        for (var i in $scope.revisores ) if ($scope.revisores[i].nickname === data) $scope.asignados = $scope.asignados.concat($scope.revisores[i]);
-        
-        
-        console.log($scope.asignados);
-        console.log($scope.asignados.length);
-
-        if($scope.asignados.length> 0){            
+        if($scope.asignados.length < 5){ 
+            for (var i in $scope.revisores ) if ($scope.revisores[i].nickname === data) $scope.asignados = $scope.asignados.concat($scope.revisores[i]);
+        }else{
+            console.log('muchos Fin!');
+        }
+        if($scope.asignados.length > 0){            
             $scope.hayAsignados = true;
         }
-
         $scope.agregado = false;
         
     }
 
     $scope.quitarRevisor = function(data){
-        console.log(data);
+        $scope.asignados.splice(data,data + 1);
     }
 
     $scope.infoRevisor = function(pos){
@@ -64,21 +66,46 @@ app.controller('asignarCtrl', ['$scope','$http', function($scope,$http){
 		$scope.masinforma = $scope.articulos[pos];		
 	}
     $scope.modalagregarRev = function(pos){
+
         $scope.showModal = !$scope.showModal;
         $scope.infoArt = $scope.articulos[pos];
         $scope.subircito = {};
         $scope.subircito.id_art = $scope.infoArt.id_art;
         console.log($scope.infoArt.id_art);
+
         $http.post('../peticiones/usuarios/getrevisores.php', $scope.subircito )
         .then(function(data){
             console.log(data.data);
             $scope.revisores = data.data.no_asignados;
-            $scope.asignados = data.data.asignados;
-
-            if($scope.asignados.length> 0){            
+            if(data.data.asignados){
+                $scope.asignados = data.data.asignados;
                 $scope.hayAsignados = true;
             }
+
+            
         })
+    }
+
+    $scope.enviarAsignados = function(){
+        console.log($scope.asignados);
+        $scope.asignadosPost = [];
+        
+        for (var i in $scope.asignados ){
+            var asignadosaux = [];
+            asignadosaux.nickname = $scope.asignados[i].nickname;
+            asignadosaux.id_art = $scope.infoArt.id_art;
+
+            $scope.asignadosPost.push(asignadosaux );  
+            
+        } 
+        console.log($scope.asignadosPost)
+        
+        $http.post('../peticiones/usuarios/setrevisores.php', $scope.asignadosPost )
+        .then(function(data){
+           
+            
+        });
+        
     }
 
     $scope.hide = function(){

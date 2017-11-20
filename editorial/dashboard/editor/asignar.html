@@ -132,7 +132,7 @@
                                             <td  style="min-width: 33.3%;"> {{ asignado.nombre | capitalize }} {{ asignado.apellido | capitalize }} </td>
                                             <td  style="min-width: 33.3%;">
                                                 <button class="btn btn-danger " ng-model="$index" ng-click="quitarRevisor($index)" >
-                                                    <i class="fa fa-user"></i>
+                                                    <i class="fa fa-times"></i>
                                                 </button>
                                             </td>
                                         </tr>
@@ -147,7 +147,7 @@
             </modal-body>
             <modal-footer>
                 <button type="button" class="btn btn-secondary" ng-click="hide()">Cerrar</button>
-                <button type="button" class="btn btn-success" ng-click="hide()">Guardar</button>
+                <button type="button" class="btn btn-success" ng-click="enviarAsignados()">Guardar</button>
             </modal-footer>
         </modal>
 

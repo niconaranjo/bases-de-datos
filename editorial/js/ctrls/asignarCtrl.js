@@ -52,7 +52,7 @@ app.controller('asignarCtrl', ['$scope','$http', function($scope,$http){
     }
 
     $scope.quitarRevisor = function(data){
-        $scope.asignados.splice(data,data + 1);
+        $scope.asignados.splice( data, data );
     }
 
     $scope.infoRevisor = function(pos){

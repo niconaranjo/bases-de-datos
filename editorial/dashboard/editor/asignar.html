@@ -50,27 +50,98 @@
                         <table class="table table-responsive ">
                             <thead class="thead-light" style="display: block;">
                                 <tr style="width: 100%; display: flex; flex-direction: row; ">
-                                    <th style="width: 50%; min-width: 10%;">Nombre Revisor</th>
-                                    <th style="width: 50%; min-width: 10%;">Intereses</th>
+                                    <th style="width: 33.3%; min-width: 10%;">Nombre Revisor</th>
+                                    <th style="width: 33.3%; min-width: 10%;">Intereses</th>
+                                    <th style="width: 33.3%; min-width: 10%;">Ver</th>
                                 </tr>
                             </thead>
                             <tbody class="tabla-body ">
-                                <tr ng-repeat="revisor in articulos" style="width: 100%; display: flex; flex-direction: row; ">
-                                    <td style="width: 50%;">Nombre</td>
-                                    <td style="width: 50%;">Interes</td>
+                                <tr ng-repeat="revisor in revisores" style="width: 100%; display: flex; flex-direction: row; ">
+                                    <td style="width: 33.3%;">{{ revisor.nombre | capitalize }} {{ revisor.apellido | capitalize }}</td>
+                                    <td style="width: 33.3%;">{{ revisor.int_revisor }}</td>
+                                    <td style="width: 33.3%;">
+                                        <button class="btn btn-info " ng-model="$index" ng-click="infoRevisor($index)">
+                                            <i class="fa fa-user"></i>
+                                        </button>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
 
                     <div class="col-md-6">
-                        <h2>INFO POR REVISOR</h2>
+
+                        <div class="container">
+                            <h2>Informacion del Revisor</h2>
+                            <br>
+                        </div>
+                        <div ng-show="datosRevisor">
+                                <table class="table table-responsive ">
+                                        <tbody>
+                                            <tr>
+                                                <th>Nombre</th>
+                                                <td>{{revisorS.nombre | capitalize }} {{ revisorS.apellido | capitalize }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Idiomas</th>
+                                                <td>{{revisorS.idioma | idiomas}} </td>
+                                            </tr>
+                                            <tr>
+                                                <th>Intereses de Revision</th>
+                                                <td>{{revisorS.int_revisor }} </td>
+                                            </tr>
+                                            <tr>
+                                                <th>Biografia</th>
+                                                <td>{{revisorS.biografia }} </td>
+                                            </tr>
+                                            <tr>
+                                                <th>Institucion</th>
+                                                <td>{{revisorS.institucion }} </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn-warning " ng-click="agregarRevisor(revisorS.nickname) ">
+                                                        <i class="fa fa-user"></i> Agregar como revisor
+                                                    </button>
+                                                </td>
+                                            </tr>
+            
+                                        </tbody>
+                                    </table>
+                        </div>
+                        
                     </div>
                 </div>
                 <div class="col-md-12">
 
                     <h1>Revisores Asignados</h1>
-
+                    <div class="container-fluid" ng-show="hayAsignados">
+                            <table class="table table-responsive ">
+                                    <thead class="thead-dark" >
+                                        <tr >
+                                            <th style="min-width: 33.3%;"> Imagen </th>
+                                            <th style="min-width: 33.3%;">Nombre Revisor</th>
+                                            <th style="min-width: 33.3%;">Borrar</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody >
+                                        <tr ng-repeat="asignado in asignados" >
+                                            <td  style="min-width: 33.3%;"><img class="img-revisor rounded-circle" src="img/usuario.png" alt="person" class="img-fluid rounded-circle"></td>
+                                            <td  style="min-width: 33.3%;"> {{ asignado.nombre | capitalize }} {{ asignado.apellido | capitalize }} </td>
+                                            <td  style="min-width: 33.3%;">
+                                                <button class="btn btn-danger " ng-model="$index" ng-click="quitarRevisor($index)">
+                                                    <i class="fa fa-user"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                    </div>
+                    <div class="container-fluid" ng-show="!hayAsignados">
+                            <h3>No hay Asignados</h3>
+                    </div>
                 </div>
 
             </modal-body>

@@ -116,22 +116,26 @@ app.filter('capitalize', function() {
 app.filter('idiomas', function(){
     return function(data) {
        var obj = "";
-       var datos = data.split(",");
-       for(i = 0; i< datos.length; i++){
+       try{
 
-            if(datos[i] == '0'){
-                obj+="Español"
-            }
-            if(datos[i] == '1'){
-                obj+="Inglés"
-            }
-            if(datos[i] == '2'){
-                obj+="Portugués"
-            }
-            if(i < datos.length-1)obj+=", "
-            
-       }
-       return obj;
+       
+        var datos = data.split(",");
+        for(i = 0; i< datos.length; i++){
+
+                if(datos[i] == '0'){
+                    obj+="Español"
+                }
+                if(datos[i] == '1'){
+                    obj+="Inglés"
+                }
+                if(datos[i] == '2'){
+                    obj+="Portugués"
+                }
+                if(i < datos.length-1)obj+=", "
+                
+        }
+        return obj;
+        }catch(e){}
 
       }
 });

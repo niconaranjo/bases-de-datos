@@ -9,40 +9,9 @@ app.controller('asignarCtrl', ['$scope','$http', function($scope,$http){
     $scope.datosRevisor = false;
     $scope.asignados = [];
     $scope.hayAsignados = false;
+    $scope.agregado = true;
     //Borrar Despues
-    $scope.revisores = [
-
-        {
-            nickname:'ADMIN',
-            nombre:'NICOLAS',
-            apellido:'NARANJO MEJIA',
-            correo:'niconaranjo95@gmail.com',
-            idioma:'0,1',
-            int_revisor:'Diseño, UX',
-            biografia: 'Hola esta es la bio',
-            institucion:'UMNG'
-        },
-        {
-            nickname:'FELI',
-            nombre:'FELIPE ',
-            apellido:'CAMARGO',
-            correo:'niconaranjo95@gmail.com',
-            idioma:'2',
-            int_revisor:'Diseño, UX',
-            biografia: 'Hola esta es la bio',
-            institucion:'UMNG'
-        },
-        {
-            nickname:'AMOR',
-            nombre:'INGRID',
-            apellido:'USAQUEN PINEDA',
-            correo:'niconaranjo95@gmail.com',
-            idioma:'1',
-            int_revisor:'CX, MEDICINA',
-            biografia: 'Hola esta es la bio',
-            institucion:'UMNG'
-        }
-    ]
+    $scope.revisores = [];
 
     $scope.starter = function(){
         if($scope.IsEditor){
@@ -75,6 +44,8 @@ app.controller('asignarCtrl', ['$scope','$http', function($scope,$http){
         if($scope.asignados.length> 0){            
             $scope.hayAsignados = true;
         }
+
+        $scope.agregado = false;
         
     }
 
@@ -85,6 +56,7 @@ app.controller('asignarCtrl', ['$scope','$http', function($scope,$http){
     $scope.infoRevisor = function(pos){
         $scope.revisorS = $scope.revisores[pos];
         $scope.datosRevisor = true;
+        $scope.agregado = true;
     }
 
     $scope.masinfo = function(pos){	
@@ -94,12 +66,18 @@ app.controller('asignarCtrl', ['$scope','$http', function($scope,$http){
     $scope.modalagregarRev = function(pos){
         $scope.showModal = !$scope.showModal;
         $scope.infoArt = $scope.articulos[pos];
-        
+        $scope.subircito = {};
+        $scope.subircito.id_art = $scope.infoArt.id_art;
         console.log($scope.infoArt.id_art);
-        $http.post('../peticiones/usuarios/getrevisores.php', $scope.infoArt.id_art)
+        $http.post('../peticiones/usuarios/getrevisores.php', $scope.subircito )
         .then(function(data){
             console.log(data.data);
-            //$scope.revisores = data.data;
+            $scope.revisores = data.data.no_asignados;
+            $scope.asignados = data.data.asignados;
+
+            if($scope.asignados.length> 0){            
+                $scope.hayAsignados = true;
+            }
         })
     }
 
@@ -108,6 +86,6 @@ app.controller('asignarCtrl', ['$scope','$http', function($scope,$http){
         $scope.showModal2 = false;
         $scope.datosRevisor = false;
         $scope.hayAsignados = false;
-        $scope.asignados.splice(0,1);
+        $scope.asignados.splice(0,$scope.asignados.length);
     }
 }])

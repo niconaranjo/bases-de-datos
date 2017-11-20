@@ -19,24 +19,28 @@
   */
 
   //Se evita inyeccion de sql se pregunta si tiene espacios lo que se manda
-  if(preg_match('/\s/',$user) || preg_match('/\s/',$pass)){
+  if(preg_match('/\s/', $user) || preg_match('/\s/', $pass)){
     $arr['valor'] = '0';
+    
   }else{    
+    
     $bol = False;
     //Se hace la consulta para verificar si existe el usuario
     $sql="SELECT id_usuario, nombre, apellido, password, tipo_usuario  FROM usuario WHERE nickname = '$user' ";
     $resultado = $conex->query($sql);
     //se revisa que la consuta arroje algo
     if($resultado->num_rows == 0){
+      
       // no se encuentra coincidencias de nickname en db
       $arr['valor'] = '0';
     }else{
-
+      
       $row = $resultado->fetch_assoc();
 
 
-      $pasn = Database::uncrypt($pass, $row["password"]);
-      if( $pasn == true ){
+      //$pasn = uncrypt($pass, $row["password"]);
+      //echo $pasn ;
+      if( $pass == $row["password"] ){
         //Se inicia sesión de php para guardar variables globales
         session_start();
 

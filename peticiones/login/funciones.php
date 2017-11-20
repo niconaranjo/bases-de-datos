@@ -18,10 +18,9 @@ class Database{
 
     function uncrypt($Evaluar, $Contra){
 
-        if( crypt($Evaluar, $Contra) == $Contra)
-            return true;
-        else
-            return false;
+        if( crypt($Evaluar, $Contra) == $Contra ){ echo 'true'; return true;}
+        else {echo 'false'; return false; }
+        
         
     }
 

@@ -104,7 +104,7 @@ app.controller('loginCtrl', ['$scope', '$http', function($scope, $http){
                        
                         $scope.infouser =  data.data;
                         setTimeout(function(){
-                            //window.location = "editorial/index.html";
+                            window.location = "editorial/index.html";
                         }, 2500);
                     }
                 })

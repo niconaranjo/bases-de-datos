@@ -24,7 +24,7 @@
   $revision = strtoupper(isset($request["intereses"]) ? $request["intereses"]:'');
   $biografia = isset($request["bio"]) ? $request["bio"]:'0';
 
-  $password = Database::crypt( $password);
+  //$password = Database::crypt( $password);
  
   /*$nombre = isset($_POST["nombre"]) ? $_POST["nombre"]:'0';
   $apellido = isset($_POST["apellido"]) ? $_POST["apellido"]:'0';

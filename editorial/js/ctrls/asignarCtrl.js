@@ -65,13 +65,16 @@ app.controller('asignarCtrl', ['$scope','$http', function($scope,$http){
 		}
     }
     $scope.agregarRevisor = function(data){
-        if($scope.revisores.lenght < 0){
+        
+        for (var i in $scope.revisores ) if ($scope.revisores[i].nickname === data) $scope.asignados = $scope.asignados.concat($scope.revisores[i]);
+        
+        
+        console.log($scope.asignados);
+        console.log($scope.asignados.length);
+
+        if($scope.asignados.length> 0){            
             $scope.hayAsignados = true;
         }
-        for (var i in $scope.revisores ) 
-            if ($scope.revisores[i].nickname === data) 
-                $scope.asignados = $scope.asignados.concat($scope.revisores[i]);
-
         
     }
 
@@ -104,5 +107,7 @@ app.controller('asignarCtrl', ['$scope','$http', function($scope,$http){
         $scope.showModal = false;
         $scope.showModal2 = false;
         $scope.datosRevisor = false;
+        $scope.hayAsignados = false;
+        $scope.asignados.splice(0,1);
     }
 }])

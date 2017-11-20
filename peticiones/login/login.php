@@ -26,7 +26,7 @@
     
     $bol = False;
     //Se hace la consulta para verificar si existe el usuario
-    $sql="SELECT id_usuario, nombre, apellido, password, tipo_usuario  FROM usuario WHERE nickname = '$user' ";
+    $sql="SELECT id_usuario, nickname, nombre, apellido, password, tipo_usuario  FROM usuario WHERE nickname = '$user' ";
     $resultado = $conex->query($sql);
     //se revisa que la consuta arroje algo
     if($resultado->num_rows == 0){
@@ -46,6 +46,7 @@
 
         //Se crean variables globales
         $_SESSION['id_usuario'] = $row["id_usuario"];
+        $_SESSION['nickname'] = $row["nickname"];
         $_SESSION['user'] = $user;
         $_SESSION['pass'] = $pass;
         $_SESSION['nombre'] = ucfirst(strtolower($row["nombre"]));

@@ -91,7 +91,7 @@ app.controller('asignarCtrl', ['$scope','$http', function($scope,$http){
         $scope.asignadosPost = [];
         
         for (var i in $scope.asignados ){
-            var asignadosaux = [];
+            var asignadosaux = {};
             asignadosaux.nickname = $scope.asignados[i].nickname;
             asignadosaux.id_art = $scope.infoArt.id_art;
 
@@ -103,7 +103,7 @@ app.controller('asignarCtrl', ['$scope','$http', function($scope,$http){
         $http.post('../peticiones/usuarios/setrevisores.php', $scope.asignadosPost )
         .then(function(data){
            
-            
+            console.log(data);
         });
         
     }

@@ -8,6 +8,7 @@ app.controller('revisionCtrl', ['$scope','$http', function($scope,$http){
     $scope.carga = true;
 	$scope.nocarga = false;
     $scope.Psubida = 0.01;
+    
     $scope.starter = function(){
         if($scope.IsRevisor){
 
@@ -18,7 +19,8 @@ app.controller('revisionCtrl', ['$scope','$http', function($scope,$http){
                    $scope.hayArt = false;
                }else{
                    $scope.hayArt = true;
-                   
+                   $scope.articulosrevi = data.data;
+                   console.log( $scope.articulosrevi);
                 }
             });
             
@@ -26,6 +28,7 @@ app.controller('revisionCtrl', ['$scope','$http', function($scope,$http){
 			window.location = "index.html";
 		}
     };
+    
 
     $scope.subir = function () {
 		$scope.showModal = !$scope.showModal;

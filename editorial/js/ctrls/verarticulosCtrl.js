@@ -44,7 +44,18 @@ app.controller('verarticulosCtrl', ['$scope','$http', function($scope,$http){
          $scope.showModal2 = false;
          
      }
-
+     $scope.aceptarArt = function(){
+        $http.post('../peticiones/articulos/checkarticulos.php' )
+        .then(function(data){
+            console.log(data.data);
+            if(data.data.vacio){
+               $scope.hayArt = false;
+           }else{
+               $scope.hayArt = true;
+               $scope.articulosrevi = data.data;
+            }
+        });
+     }
 }]);
 
 	

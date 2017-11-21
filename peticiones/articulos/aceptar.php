@@ -8,9 +8,9 @@
 
 
     $date = date("Y:m:d H:i:s");
-    $datem = mktime(0, 0, 0, date("m"), date("d")+15, date("Y"));
-
-    $sql = "INSERT INTO `revisar` (`Id_art`, `nickname_revisor`, `id_form`, `fecha_revision`, `fecha_aceptacion`, `fecha_limite`, `est_aceptado`) VALUES ('2', '$idUser', '', ' ', '$date', '2017-11-21', '0');";
+    $datem = $date + 15;
+    echo $datem;
+    /*$sql = "INSERT INTO `revisar` (`Id_art`, `nickname_revisor`, `id_form`, `fecha_revision`, `fecha_aceptacion`, `fecha_limite`, `est_aceptado`) VALUES ('2', '$idUser', '', ' ', '$date', '2017-11-21', '0');";
 
     if ($conex->query($sql) === TRUE) {
         
@@ -21,7 +21,7 @@
         $valor= 0;
         $arr = array('valor' => $valor);
     }
-
 }
+*/
 
 ?>

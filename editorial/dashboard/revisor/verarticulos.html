@@ -8,6 +8,7 @@
                             <th style="width: 20%; min-width: 10%;">Nombre del artículo</th>
                             <th style="width: 20%; min-width: 10%;">Autor</th>
                             <th style="width: 20%; min-width: 10%;">Info Autor</th>
+                            <th style="width: 20%; min-width: 10%;">Aceptar Articulo </th>
                             <th style="width: 20%; min-width: 10%;">Articulo</th>
                             <th style="width: 20%; min-width: 10%;">Info Articulo</th>
                         </tr>
@@ -16,6 +17,10 @@
                         <tr ng-repeat="articulo in articulosrevi">
                             <td>{{ articulo.titulo }}</td>
                             <td style="text-transform: capitalize;">{{ articulo.nombre | capitalize }} {{ articulo.apellido | capitalize }}</td>
+                            <td> <button class="btn btn-warning" ng-click="aceptarArt(articulo.id_art)"> <i class="fa fa-eye"></i> Aceptar  </button></td>
+                            
+                                
+
                             <td class="btn btn-success" ng-model="$index" ng-click="masinfo($index)">
                                 <i class="fa fa-eye"></i> Mas info</td>
                             <td> <a href="../articulos/documentos/{{ articulo.version }}" download>Descargar articulo </a> </td>

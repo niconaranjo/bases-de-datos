@@ -44,16 +44,15 @@ app.controller('verarticulosCtrl', ['$scope','$http', function($scope,$http){
          $scope.showModal2 = false;
          
      }
-     $scope.aceptarArt = function(){
-        $http.post('../peticiones/articulos/checkarticulos.php' )
+
+     $scope.aceptarArt = function(pos){
+        var art = [];
+        art.id_art = pos;
+        console.log(art);
+        $http.post('../peticiones/articulos/aceptar.php', art )
         .then(function(data){
             console.log(data.data);
-            if(data.data.vacio){
-               $scope.hayArt = false;
-           }else{
-               $scope.hayArt = true;
-               $scope.articulosrevi = data.data;
-            }
+            
         });
      }
 }]);

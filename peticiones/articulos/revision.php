@@ -33,7 +33,7 @@ if ($conex->query($sql) === TRUE) {
     if ($resultado->num_rows > 0) {
         while ($row = $resultado->fetch_assoc()) {
             $id_form = $row["id_form"];
-            $sql3 = "UPDATE `revisar` SET `fecha_revision` = '$date', `id_form` = $id_form, `est_aceptado` = '$est_aceptado' WHERE `id_art` = '$id_art'";
+            $sql3 = "UPDATE `revisar` SET `id_form` = $id_form, `fecha_revision` = '$date', `est_aceptado` = $est_aceptado WHERE `id_art` = $id_art";
             if($conex->query($sql3)) {
 
             }

@@ -2,6 +2,7 @@
 date_default_timezone_set('America/Bogota');
 require_once("../config.php");
 session_start();
+error_reporting(0);
 $nicknameCurrentUser = $_SESSION['nickname'];
 
 $postdata = file_get_contents("php://input");
@@ -9,6 +10,7 @@ $request = json_decode($postdata);
 $request = ( array )$request;
 $request_array = [];
 $sql_array = [];
+//$arr = [];
 $date = date("Y:m:d H:i:s");
 
 foreach ($request as &$row) {
@@ -92,9 +94,9 @@ if (empty($request)) {
 }
 
 
-print_r($request_array);
+//print_r($request_array);
 
-print_r($sql_array);
+//print_r($sql_array);
 
 header('Content-type: application/json; charset=utf-8');
         //La respuesta se manda como un json

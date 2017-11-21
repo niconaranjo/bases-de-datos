@@ -38,12 +38,22 @@
         <modal visible="showModal" backdrop="static" tam="lg">
             <modal-header title="{{ infoArt.titulo }}"></modal-header>
             <modal-body>
-                <div class="col-md-12">
+               
 
-                    <label for="buscar">Buscar por revisor o por Intereses de Revision </label>
-                    <input type="text" id="buscar" class="form-control">
-
-                </div>
+                    <div class="row col-md-12">
+                            <div class="col-md-6"> 
+                                <label for="buscar">Buscar por nombre revisor </label>
+                                <input type="text" id="buscar" class="form-control" ng-model="busqueda.nombre">
+                                
+                            </div>
+                            <div class="col-md-6"> 
+    
+                                <label for="buscar_int_revision">Buscar por intereses de Revision </label>
+                                <input type="text" id="buscar_int_revision" class="form-control" ng-model="busqueda.int_revision">
+                            </div>
+    
+                    </div>
+               
 
                 <div class="row col-md-12">
                     <div class="col-md-6">
@@ -56,8 +66,8 @@
                                 </tr>
                             </thead>
                             <tbody class="tabla-body ">
-                                <tr ng-repeat="revisor in revisores" style="width: 100%; display: flex; flex-direction: row; ">
-                                    <td style="width: 33.3%;">{{ revisor.nombre | capitalize }} {{ revisor.apellido | capitalize }}</td>
+                                <tr ng-repeat="revisor in revisores | filter:busqueda | orderBy:columna:reverse" style="width: 100%; display: flex; flex-direction: row; ">
+                                    <td style="width: 33.3%; text-transform: capitalize;" >{{ revisor.nombre | capitalize }} {{ revisor.apellido | capitalize }}</td>
                                     <td style="width: 33.3%;">{{ revisor.int_revision }}</td>
                                     <td style="width: 33.3%;">
                                         <button class="btn btn-info " ng-model="$index" ng-click="infoRevisor($index)">
@@ -80,7 +90,7 @@
                                         <tbody>
                                             <tr>
                                                 <th>Nombre</th>
-                                                <td>{{revisorS.nombre | capitalize }} {{ revisorS.apellido | capitalize }}</td>
+                                                <td style="text-transform: capitalize;">{{revisorS.nombre | capitalize }} {{ revisorS.apellido | capitalize }}</td>
                                             </tr>
                                             <tr>
                                                 <th>Idiomas</th>

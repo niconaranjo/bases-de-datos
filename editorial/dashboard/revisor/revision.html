@@ -1,0 +1,102 @@
+<section class="section-padding section-no-padding-bottom animated fadeIn fast" ng-controller="revisionCtrl" ng-init="starter()">
+
+    <div class="container-fluid">
+        <form ng-submit="subir( formulario.$valid )" novalidate="novalidate">
+                <h1>Señor revisor</h1><h2><i>Por favor suba su revision con el siguiente formulario <a href=" ">PONER LINK</a></i></h2>
+                <br>
+            <div class="row">
+                
+                <div class="col-md-6">
+                    
+                    <div class="form-group">
+                        <label for="nombre">Subir Articulo corregido en formatos PDF o Word</label>
+                        <input id="file_a" name="articulo" type="file" file-input="file_a" ng-model="files_a" accept=".pdf, .docx, .doc" valid-file
+                            required="required">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nombre">Subir Formulario en formatos PDF o Word</label>
+                        <input id="file_b" name="articulo" type="file" file-input="file_b" ng-model="files_b" accept=".pdf, .docx, .doc" valid-file
+                            required="required">
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-auto">
+                            <div id="t_usuario">
+                                <label for="inlineRadio1">Seleccione segun su criterio si el articulo es aprobado o no:</label>
+                                <br>
+
+                                <div class="contentradio">
+
+                                    <div class="form-check form-check-inline contentradio-success">
+                                        <input class="form-check-input" ng-model="formData.aprobado" type="radio" name="t_usuario" value="0" id="autor1" required="required">
+                                        <label class="form-check-label" for="autor1">Aprobado</label>
+                                    </div>
+                                    <div class="form-check form-check-inline contentradio-success">
+                                        <input class="form-check-input" type="radio" ng-model="formData.aprobado" name="t_usuario" value="1" id="autor2" required="required">
+                                        <label class="form-check-label" for="autor2"> NO Aprobado </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary"> Enviar Revision</button>
+                </div>
+
+            </div>
+            <modal visible="showModal" backdrop="static" tam ="md">
+                    <modal-header title="Subiendo sus archivos"></modal-header>
+                    <modal-body>
+                        <div ng-show="!nocarga">
+                            <div class="carga" ng-show="carga">
+                                <div class="wrapper">
+                                    <progress-arc size="100" stroke="{{ stroke }}" stroke-width="9" complete="Psubida">
+                                    </progress-arc>
+                                </div>
+                                <div class="col-12 info justify-content-center">
+                                    <h3 class="text-center">Sus archivos se están Cargando</h3>
+                                </div>
+                            </div>
+                            <div class="carga " ng-show="!carga">
+                                <div class="swal2-icon swal2-success swal2-animate-success-icon" style="display: block;">
+                                    <div class="swal2-success-circular-line-left" style="background: rgb(255, 255, 255);"></div>
+                                    <span class="swal2-success-line-tip swal2-animate-success-line-tip"></span>
+                                    <span class="swal2-success-line-long swal2-animate-success-line-long"></span>
+                                    <div class="swal2-success-ring"></div>
+                                    <div class="swal2-success-fix" style="background: rgb(255, 255, 255);"></div>
+                                    <div class="swal2-success-circular-line-right" style="background: rgb(255, 255, 255);"></div>
+                                </div>
+                                <div class="col-12 info justify-content-center">
+                                    <h3 class="text-center">Sus archivos han cargado adecuadamente</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-show="nocarga">
+                            <div class="carga ">
+                                <div class="swal2-icon swal2-error swal2-animate-error-icon" style="display: block;">
+                                    <span class="swal2-x-mark swal2-animate-x-mark">
+                                        <span class="swal2-x-mark-line-left"></span>
+                                        <span class="swal2-x-mark-line-right"></span>
+                                    </span>
+                                </div>
+                                <div class="col-12 info justify-content-center">
+                                    <h3 class="text-center">Sus archivos no se han cargado adecuadamente, por favor revise</h3>
+                                </div>
+                            </div>
+                        </div>
+        
+        
+                    </modal-body>
+                    <modal-footer>
+        
+                        <button type="button" class="btn btn-secondary" ng-click="hide()">Cerrar</button>
+        
+        
+                    </modal-footer>
+                </modal>
+        </form>
+    </div>
+
+
+</section>

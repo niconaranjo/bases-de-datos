@@ -1,9 +1,8 @@
-
 <div class="side-navbar-wrapper">
     <div class="sidenav-header d-flex align-items-center justify-content-center">
         <div class="sidenav-header-inner text-center">
             <img src="img/avatar-1.jpg" alt="person" class="img-fluid rounded-circle">
-            <h2 class="h5 ">{{ usuer.nombre | capitalize }} {{ usuer.apellido | capitalize  }}</h2>
+            <h2 class="h5 " style="text-transform: capitalize;">{{ usuer.nombre | capitalize }} {{ usuer.apellido | capitalize }}</h2>
             <span class="text-uppercase">{{ usuer.tipo_usuario | Tuser }}</span>
         </div>
         <div class="sidenav-header-logo">
@@ -20,7 +19,7 @@
                     <span>Inicio</span>
                 </a>
             </li>
-            <li  ng-class="marticulos" ng-show="IsAutor">
+            <li ng-class="marticulos" ng-show="IsAutor">
                 <a href="#!/articulo">
                     <i class="icon-form"></i>
                     <span>Artículos</span>
@@ -34,12 +33,30 @@
             </li>
 
             <li ng-class="masignar" ng-show="IsEditor">
-                    <a href="#!/asignar-articulos">
+                <a href="#!/asignar-articulos">
+                    <i class="icon-form"></i>
+                    <span>Asignar Articulos</span>
+                </a>
+            </li>
+            <li ng-class="masignareditor" ng-show="IsSuper">
+                <a href="#!/asignar-editor">
+                    <i class="icon-form"></i>
+                    <span>Asignar Editor</span>
+                </a>
+            </li>
+            <li ng-class="mverarticulos" ng-show="IsRevisor">
+                <a href="#!/articulos-asignados">
+                    <i class="icon-form"></i>
+                    <span>Articulos Asignados</span>
+                </a>
+            </li>
+            <li ng-class="mrevision" ng-show="IsRevisor">
+                    <a href="#!/subir-revision">
                         <i class="icon-form"></i>
-                        <span>Asignar Articulos</span>
+                        <span>Subir Revision</span>
                     </a>
                 </li>
-            
+
         </ul>
     </div>
 </div>

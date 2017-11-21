@@ -1,4 +1,4 @@
-var app = angular.module('basesdedatosApp',[ 'ngRoute', 'jcs-autoValidate','angular-progress-arc']);
+var app = angular.module('basesdedatosApp',[ 'ngRoute', 'jcs-autoValidate','angular-progress-arc', 'ngSanitize']);
 
 angular.module('jcs-autoValidate').run([
     'defaultErrorMessageResolver',
@@ -18,7 +18,7 @@ app.controller('appCtrl', ['$scope', '$http', function($scope, $http){
     $scope.IsAutor = false;
     $scope.IsRevisor = false;
     $scope.IsEditor = false;
-
+    $scope.IsSuper = false;
     $scope.Session = function(){
         $scope.verif = {val:'0668ac44-c091-4396-b2c7-d1ab137d4794'};
         $http.post('../peticiones/login/session.php', $scope.verif  )
@@ -39,7 +39,7 @@ app.controller('appCtrl', ['$scope', '$http', function($scope, $http){
                 $scope.IsAutor = !$scope.IsAutor;
             }else if($scope.usuer.tipo_usuario == '1'){$scope.IsRevisor = !$scope.IsRevisor}
             else if($scope.usuer.tipo_usuario == '2'){$scope.IsEditor = !$scope.IsEditor}
-            else if($scope.usuer.tipo_usuario == '4'){$scope.IsAutor = !$scope.IsAutor; $scope.IsRevisor = !$scope.IsRevisor;$scope.IsEditor = !$scope.IsEditor }
+            else if($scope.usuer.tipo_usuario == '4'){$scope.IsAutor = !$scope.IsAutor; $scope.IsRevisor = !$scope.IsRevisor;$scope.IsEditor = !$scope.IsEditor; $scope.IsSuper = !$scope.IsSuper; }
 
         });
     }
@@ -56,6 +56,10 @@ app.controller('appCtrl', ['$scope', '$http', function($scope, $http){
         $scope.mDashboard = "";
         $scope.mnuevoArticulo = "";
         $scope.masignar = "";
+        $scope.masignareditor = "";
+        $scope.mverarticulos = "";
+        $scope.mrevision = "";
+
         $scope[Opcion] = "active";
 
     }
@@ -80,6 +84,18 @@ app.config( function( $routeProvider ){
         .when('/asignar-articulos',{
             templateUrl: 'dashboard/editor/asignar.html',
             controller: 'asignarCtrl'
+        })
+        .when('/asignar-editor',{
+            templateUrl: 'dashboard/editor/asignareditor.html',
+            controller: 'asignarEditorCtrl'
+        })  
+        .when('/articulos-asignados',{
+            templateUrl: 'dashboard/revisor/verarticulos.html',
+            controller: 'verarticulosCtrl'
+        }) 
+        .when('/subir-revision',{
+            templateUrl: 'dashboard/revisor/revision.html',
+            controller: 'revisionCtrl'
         }) 
         .otherwise({
         redirectTo: '/'
@@ -132,6 +148,25 @@ app.filter('idiomas', function(){
                     obj+="Portugués"
                 }
                 if(i < datos.length-1)obj+=", "
+                
+        }
+        return obj;
+        }catch(e){}
+
+      }
+});
+
+
+app.filter('recursos', function(){
+    return function(data) {
+       var obj = "";
+       try{
+
+       
+        var datos = data.split(",");
+        for(i = 0; i< datos.length; i++){
+            datos[i] =  datos[i].replace(/\s/g, '');
+            obj += '<a href="../articulos/recursos/'+datos[i]+'" download> '+ datos[i] +' </a> <br>';
                 
         }
         return obj;

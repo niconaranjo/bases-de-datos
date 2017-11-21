@@ -52,7 +52,7 @@ app.controller('asignarCtrl', ['$scope','$http', function($scope,$http){
     }
 
     $scope.quitarRevisor = function(data){
-        $scope.asignados.splice( data, data );
+        $scope.asignados.splice( data, 1 );
     }
 
     $scope.infoRevisor = function(pos){
@@ -87,24 +87,40 @@ app.controller('asignarCtrl', ['$scope','$http', function($scope,$http){
     }
 
     $scope.enviarAsignados = function(){
-        console.log($scope.asignados);
-        $scope.asignadosPost = [];
-        
-        for (var i in $scope.asignados ){
+        if($scope.asignados.length >0){
+            console.log($scope.asignados);
+            $scope.asignadosPost = [];
+            
+            for (var i in $scope.asignados ){
+                var asignadosaux = {};
+                asignadosaux.nickname = $scope.asignados[i].nickname;
+                asignadosaux.id_art = $scope.infoArt.id_art;
+    
+                $scope.asignadosPost.push(asignadosaux );  
+                
+            } 
+            console.log($scope.asignadosPost)
+        }else{
             var asignadosaux = {};
-            asignadosaux.nickname = $scope.asignados[i].nickname;
+            $scope.asignadosPost = [];
             asignadosaux.id_art = $scope.infoArt.id_art;
 
-            $scope.asignadosPost.push(asignadosaux );  
-            
-        } 
-        console.log($scope.asignadosPost)
+            $scope.asignadosPost.push(asignadosaux );
+            console.log($scope.asignadosPost)
+        }
+        
         
         $http.post('../peticiones/usuarios/setrevisores.php', $scope.asignadosPost )
         .then(function(data){
            
-            console.log(data);
+            $scope.showModal = false;
+            $scope.hayAsignados = false;
+            $scope.asignados.splice(0,$scope.asignados.length);
+            
+            
         });
+
+        
         
     }
 

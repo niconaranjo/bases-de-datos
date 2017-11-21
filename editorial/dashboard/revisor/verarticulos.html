@@ -1,0 +1,115 @@
+<section class="section-padding section-no-padding-bottom animated fadeIn fast" ng-controller="verarticulosCtrl" ng-init="starter()">
+        <div class="container-fluid" ng-show="hayArt">
+            
+                <h1>Articulos a Revisar</h1>
+                <table class="table table-responsive ">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th style="width: 20%; min-width: 10%;">Nombre del artículo</th>
+                            <th style="width: 20%; min-width: 10%;">Autor</th>
+                            <th style="width: 20%; min-width: 10%;">Info Autor</th>
+                            <th style="width: 20%; min-width: 10%;">Articulo</th>
+                            <th style="width: 20%; min-width: 10%;">Info Articulo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="articulo in articulosrevi">
+                            <td>{{ articulo.titulo }}</td>
+                            <td style="text-transform: capitalize;">{{ articulo.nombre | capitalize }} {{ articulo.apellido | capitalize }}</td>
+                            <td class="btn btn-success" ng-model="$index" ng-click="masinfo($index)">
+                                <i class="fa fa-eye"></i> Mas info</td>
+                            <td> <a href="../articulos/documentos/{{ articulo.version }}" download>Descargar articulo </a> </td>
+                                
+                            <td class="btn btn-primary" ng-model="$index" ng-click="infoarticulo($index)">
+                                <i class="fa fa-user"></i> Ver Mas</td>
+        
+                        </tr>
+        
+                    </tbody>
+                </table>
+
+                <modal visible="showModal2" tam="md">
+                        <modal-header title="{{ masinforma.titulo }} "></modal-header>
+                        <modal-body>
+                            <table class="table table-responsive ">
+                                <tbody>
+                                    <tr>
+                                        <th>Biografia</th>
+                                        <td>{{ masinforma.biografia }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Correo</th>
+                                        <td>{{ masinforma.correo | lowercase }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>idiomas</th>
+                                        <td>{{ masinforma.idioma | idiomas }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Institucion</th>
+                                        <td> {{ masinforma.institucion }} </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </modal-body>
+                        <modal-footer>
+                            <button type="button" class="btn btn-secondary" ng-click="hide()">Cerrar</button>
+                        </modal-footer>
+                    </modal>
+
+                    <modal visible="showModal" tam="md">
+                            <modal-header title="{{ masinforma.titulo }} "></modal-header>
+                            <modal-body>
+                                <table class="table table-responsive ">
+                                    <tbody>
+                                            <tbody>
+                                                    <tr>
+                                                        <th>Version</th>
+                                                        <td>{{ masinforma.version }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Autores</th>
+                                                        <td>{{ masinforma.autores }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>idiomas</th>
+                                                        <td>{{ masinforma.idiomas | idiomas }}</td>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                        <th>Recursos multimedia</th>
+                                                        <td ng-bind-html='masinforma.recuros_multimedia| recursos '>    </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Referencias</th>
+                                                        <td>{{ masinforma.referencias }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Agradecimiento Autores</th>
+                                                        <td> <a href="../articulos/documnetos/{{ masinforma.version_agradecimiento_autores }}" download> {{ masinforma.version_agradecimiento_autores }} </a></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Sesion Derechos Autor</th>
+                                                        <td>  <a href="../articulos/documnetos/{{ masinforma.sesion_derechos_autor }}" download> {{ masinforma.sesion_derechos_autor }} </a></td>
+                                                    </tr>
+                                                
+                                    </tbody>
+                                </table>
+                            </modal-body>
+                            <modal-footer>
+                                <button type="button" class="btn btn-secondary" ng-click="hide()">Cerrar</button>
+                            </modal-footer>
+                        </modal>
+
+        </div>
+
+
+        <div class="container-fluid" ng-show="!hayArt">
+                <div class="jumbotron">
+                    <h1 class="display-3">Aun no tienes articulos asignados para revisar</h1>
+                    <p class="lead">Aqui podras ver todos los articulos asignados para ser revisados</p>
+                    <hr class="my-4">
+                    <p>Ponte en contacto con un Editor</p>                    
+                </div>
+            </div>
+    </section>

@@ -1,0 +1,72 @@
+<section class="section-padding section-no-padding-bottom animated fadeIn fast" ng-controller="asignarEditorCtrl" ng-init="starter()">
+    <div class="container-fluid">
+        <h1>Editores  </h1>
+        <h5><i>Antes asignar como editor, verificar que no tenga articulos asignados</i> </h5>
+        <table class="table table-responsive ">
+            <thead class="thead-dark">
+                <tr>
+                    <th style="width:  25%; min-width: 10%;">Imagen</th>
+                    <th style="width: 25%; min-width: 10%;">Nombre revisor </th>
+                    <th style="width:  25%; min-width: 10%;"> Mas info </th>
+                    <th style="width:  25%; min-width: 10%;">Asignar como editor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="revisor in revisores">
+                    <td ><img class="img-revisor rounded-circle" src="img/usuario.png" alt="person" class="img-fluid rounded-circle"></td>                    
+                    <td style="text-transform: capitalize;">{{ revisor.nombre | capitalize }} {{ revisor.apellido | capitalize }}</td>
+                    <td>
+
+                        <button  class="btn btn-success" ng-model="$index" ng-click="masinfo($index)">
+                            <i class="fa fa-eye"></i> Mas info.
+                        </button>
+                    </td>
+                    <td>
+
+                        <button  class="btn btn-danger" ng-model="$index" ng-click="send($index)">
+                            
+                            <i class="fa fa-check" aria-hidden="true"></i> Volver Editor 
+                        </button>
+                    </td>
+                    
+
+                </tr>
+
+            </tbody>
+        </table>
+
+        <modal visible="showModal2" tam="md">
+                <modal-header title="{{ masinforma.titulo }} "></modal-header>
+                <modal-body>
+                    <table class="table table-responsive ">
+                        <tbody>
+                            <tr>
+                                <th>Biografia</th>
+                                <td>{{ masinforma.biografia }}</td>
+                            </tr>
+                            <tr>
+                                <th>Correo</th>
+                                <td>{{ masinforma.correo }}</td>
+                            </tr>
+                            <tr>
+                                <th>idiomas</th>
+                                <td>{{ masinforma.idioma | idiomas }}</td>
+                            </tr>
+                            <tr>
+                                <th>Institucion</th>
+                                <td>{{ masinforma.institucion }}</td>
+                            </tr>
+                            <tr>
+                                <th>Intereses Revision</th>
+                                <td>{{ masinforma.int_revision }}</td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </modal-body>
+                <modal-footer>
+                    <button type="button" class="btn btn-secondary" ng-click="hide()">Cerrar</button>
+                </modal-footer>
+            </modal>
+    </div>
+</section>

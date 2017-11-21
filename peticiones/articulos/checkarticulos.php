@@ -1,7 +1,7 @@
 <?php
     require_once("../config.php");
     session_start();
-    $idUser = $_SESSION['id_usuario'];  
+    $nickname = $_SESSION['nickname'];  
 
     $arr = array();
     $sql = "SELECT articulo.*, 

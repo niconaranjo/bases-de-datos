@@ -5,6 +5,7 @@ app.controller('verarticulosCtrl', ['$scope','$http', function($scope,$http){
     $scope.articulosrevi = [];
     $scope.masinforma = [];
     $scope.modals = false;
+    $scope.art = [];
 
     $scope.starter = function(){
         if($scope.IsRevisor){
@@ -46,14 +47,12 @@ app.controller('verarticulosCtrl', ['$scope','$http', function($scope,$http){
      }
 
      $scope.aceptarArt = function(pos){
-        var art = [];
-        art.id_art = pos;
-        console.log(art);
-        $http.post('../peticiones/articulos/aceptar.php', art )
-        .then(function(data){
-            console.log(data.data);
-            
-        });
+         
+        $http.post('../peticiones/articulos/aceptar.php', pos )
+            .then(function(data){
+                console.log(data.data);
+                
+            });
      }
 }]);
 

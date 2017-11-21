@@ -1,7 +1,7 @@
 <?php
     require_once("../config.php");
     session_start();
-    $idUser = $_SESSION['id_usuario'];    
+    $nickname = $_SESSION['nickname'];      
     
     $arr = array();
     if($_SESSION['t_usuario'] == '0'){
